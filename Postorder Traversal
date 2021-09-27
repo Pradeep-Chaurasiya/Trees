@@ -1,0 +1,46 @@
+/**
+ * Definition for binary tree
+ * class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ArrayList<Integer> postorderTraversal(TreeNode A) {
+        TreeNode curr = A;
+        Stack<TreeNode> st = new Stack<>();
+        ArrayList<Integer> list = new ArrayList<>();
+        while(curr!=null || !st.empty()){
+            if(curr != null){
+                st.push(curr);
+                list.add(curr.val);
+                curr = curr.right;
+            }
+            else{
+                curr = st.peek();
+                st.pop();
+                curr = curr.left;
+            }
+        }
+        Collections.reverse(list);
+        
+        return list;
+        // return postOrder(A);
+    }
+    
+    // ArrayList<Integer> list = new ArrayList<>();
+    
+    // ArrayList<Integer> postOrder(TreeNode root){
+    //     if(root == null) return null;
+    //     postOrder(root.left);
+    //     postOrder(root.right);
+    //     list.add(root.val);
+    //     return list;
+    // }
+}
