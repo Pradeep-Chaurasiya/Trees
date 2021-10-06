@@ -1,11 +1,26 @@
 /**
  * Definition for binary tree
- * struct TreeNode {
+ * class TreeNode {
  *     int val;
- *     TreeNode *left;
- *     TreeNode *right;
- *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
- * };
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) {
+ *      val = x;
+ *      left=null;
+ *      right=null;
+ *     }
+ * }
  */
-int Solution::solve(TreeNode* A) {
+public class Solution {
+    public int solve(TreeNode A) {
+        
+        if(A == null) return 0;
+        int left_height = solve(A.left);
+        int right_height = solve(A.right);
+        
+        int max = Math.max(left_height, right_height)+1;
+        
+        return max;
+    }
+    
 }
